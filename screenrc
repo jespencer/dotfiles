@@ -1,0 +1,81 @@
+# Automatically detach on hangup.
+autodetach on
+
+# Don't display the copyright page
+startup_message off
+
+# shell:  Default process started in screen's windows. 
+shell bash
+term xterm
+shelltitle ''
+
+# No audible bell
+vbell on
+
+# Change default scrollback value for new windows
+defscrollback 10000
+
+#don't clear screen after vi
+altscreen off
+
+# Enable/disable multiuser mode
+multiuser on
+
+#mousewheel for scrollback
+termcapinfo * ti@:te@
+
+# No screen 0
+bind c screen 1
+bind ^c screen 1
+screen 1
+
+
+#Fx keys for screen switching
+bindkey "^[OP" select 1 #f1
+bindkey "^[OQ" select 2 #f2
+bindkey "^[OR" select 3 #f3
+bindkey "^[OS" select 4
+bindkey "^[[15~" select 5
+bindkey "^[[17~" select 6
+bindkey "^[[18~" select 7
+bindkey "^[[19~" select 8
+bindkey "^[[20~" select 9
+bindkey "^[[21~" select 10
+bindkey "^[[23~" select 11
+bindkey "^[[24~" select 12
+bindkey "^[[1;5D" prev # ctrl-left to change win left
+bindkey "^[[1;5C" next # ctrl-right to change win right
+
+
+#Remove kill command
+bind K  kill
+bind X lockscreen
+
+
+#caption always
+#caption string "%{kg}%-w%{wb}|%n %t|%{-}%+w"
+hardstatus alwayslastline "%{=b}%{ky} Screens: %{kg}%-w%{y}|%n %t|%{-}%+w %-=| %{= kG}%M%d %c%{-} %{=r}"
+#hardstatus alwayslastline "%{=b}%{G} Screens: %{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kG}%M%d %c%{-} %{=r}"
+#hardstatus alwayslastline '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{G} %M/%d %{B}%c %{g}]'
+#hardstatus alwayslastline '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{G} %M/%d %{g}]'
+#
+#hardstatus string "%{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kw}%M%d %c%{-} %{=r} ${USER}@%H "
+#
+## %{= ky} set color to yellow on black.
+## %{= yk} set color to black on yellow.
+## %{=r} reverse the color attrs
+## %-Lw all window #s, titles, and flags before the current window.
+## %n %t current window number and title.
+## %+Lw all windows #s, titles, and flags after the current window.
+## %-= pad remaining spaces.
+## %M%d month and day, like MmmDD.
+## %c current time, like HH:MM.
+## %H hostname
+
+
+screen 1
+screen 2
+screen 3
+screen 4
+select 1
+
