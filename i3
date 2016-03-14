@@ -168,3 +168,61 @@ bar {
 # for_window [class="File-roller"] floating enable
 # for_window [class="Gnome-terminal"] floating enable
 
+
+#######################################################################
+#                                gaps                                 #
+#######################################################################
+
+set $gsi 10
+set $gso 0
+
+gaps inner $gsi
+gaps outer $gso
+
+# use smart gaps
+smart_gaps on
+
+# toggle outer gaps
+bindsym $mod+control+space gaps outer all set 100
+bindsym $mod+shift+control+space gaps outer all set 0
+
+set $mode_gaps Gaps: (o) outer, (i) inner, (0), (1), (2) for presets
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+	bindsym o		mode "$mode_gaps_outer"
+	bindsym i		mode "$mode_gaps_inner"
+	bindsym 0		gaps inner current set 0; mode "default"
+	bindsym 1		gaps inner current set 2; mode "default"
+	bindsym 2		gaps inner current set $gsi; mode "default"
+	bindsym Return		mode "default"
+	bindsym Escape		mode "default"
+}
+mode "$mode_gaps_inner" {
+	bindsym plus  gaps inner current plus 1
+	bindsym minus gaps inner current minus 1
+	bindsym 0     gaps inner current set 0
+
+	bindsym Shift+plus  gaps inner all plus 5
+	bindsym Shift+minus gaps inner all minus 5
+	bindsym Shift+0     gaps inner all set 0
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+	bindsym plus  gaps outer current plus 5
+	bindsym minus gaps outer current minus 5
+	bindsym 0     gaps outer current set 0
+
+	bindsym Shift+plus  gaps outer all plus 5
+	bindsym Shift+minus gaps outer all minus 5
+	bindsym Shift+0     gaps outer all set 0
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+

@@ -11,7 +11,6 @@ fi
 # User specific aliases and functions
 
 
-source ~/.bashrc.user
 
 PS1="[\u@\h] \W \$ "
 
