@@ -10,3 +10,4 @@ ln -fs ~/dotfiles/bashrc ~/.bashrc
 ln -fs ~/dotfiles/screenrc ~/.screenrc
 ln -fs ~/dotfiles/i3 ~/.config/i3/config
 ln -fs ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -fs ~/dotfiles/conkyrc ~/.conkyrc
