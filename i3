@@ -58,6 +58,7 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+x [urgent=latest] focus
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -97,29 +98,46 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#workspace switch back to last workspace
+workspace_auto_back_and_forth yes
+bindsym $mod+z workspace back_and_forth
+
+
+# workspace variables
+set $WS1 1: Term
+set $WS2 2: Web
+set $WS3 3:
+set $WS4 4:
+set $WS5 5:
+set $WS6 6:
+set $WS7 7:
+set $WS8 8:
+set $WS9 9:
+set $WS10 10:
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to $WS1
+bindsym $mod+Shift+2 move container to $WS2
+bindsym $mod+Shift+3 move container to $WS3
+bindsym $mod+Shift+4 move container to $WS4
+bindsym $mod+Shift+5 move container to $WS5
+bindsym $mod+Shift+6 move container to $WS6
+bindsym $mod+Shift+7 move container to $WS7
+bindsym $mod+Shift+8 move container to $WS8
+bindsym $mod+Shift+9 move container to $WS9
+bindsym $mod+Shift+0 move container to $WS10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -157,8 +175,21 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-        tray_output primary
+        #status_command i3status
+        #tray_output primary
+	position top
+        i3bar_command  /usr/bin/i3bar
+	status_command /home/jason/bin/i3barconky
+#	verbose true
+        colors {
+          background #303030
+          statusline #ffffff
+
+          focused_workspace  #4c7899 #285577 #ffffff
+          active_workspace   #333333 #5f676a #ffffff
+          inactive_workspace #333333 #222222 #888888
+          urgent_workspace   #2f343a #900000 #ffffff
+}
 }
 
 # Floating Windows
@@ -242,3 +273,22 @@ mode "$mode_gaps_outer" {
 exec --no-startup-id xrandr --output DVI-D-0 --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --mode 2560x1440 --pos 1920x0 --rotate normal
 
 exec --no-startup-id feh --bg-scale ~/Pictures/bg.jpg
+
+
+
+# assign apps to workspaces
+# assign [class="Firefox"] 1: ff
+ assign [class="google-chrome"] 2: Web
+#
+# #make notifications behave
+ for_window [class="Xfce4-notifyd"] floating enable
+ for_window [class="Xfce4-notifyd"] border none
+ for_window [class="YADWIN"] floating enable
+ for_window [class="YADWIN"] border none
+ for_window [instance="Download"] floating enable
+ for_window [class="Pnmixer"] floating enable
+ for_window [window_role="plugin_ui"] floating enable
+ for_window [title="Menu Update"] floating enable
+ for_window [title="___"] floating enable
+
+
