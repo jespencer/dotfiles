@@ -84,4 +84,9 @@ URxvt*color14:     #34E2E2
 URxvt*color7:      #D3D7CF
 URxvt*color15:     #ECEDEE
 
-
+!! rofi
+rofi.color-enabled: true
+rofi.color-window: argb:b5000000, argb:b5000000, 0
+rofi.color-normal: argb:00000000, white, argb:00000000, argb:b5586e75, white
+rofi.hide-scrollbar: true
+rofi.separator-style: none

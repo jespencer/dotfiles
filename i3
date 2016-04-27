@@ -30,13 +30,18 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show run
+# rofi ssh launcher
+ bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -159,14 +164,23 @@ bar {
 # Floating Windows
 # for_window [class="XTerm"] floating enable
 # for_window [class="URxvt"] floating enable
-# for_window [class="Thunar"] floating enable
-# for_window [class="Nautilus"] floating enable
-# for_window [class="GParted"] floating enable
+ for_window [class="Thunar"] floating enable
+ for_window [class="Nautilus"] floating enable
+ for_window [class="GParted"] floating enable
 # for_window [class="Gedit"] floating enable
 # for_window [class="Deluge"] floating enable
 # for_window [class="Filezilla"] floating enable
 # for_window [class="File-roller"] floating enable
-# for_window [class="Gnome-terminal"] floating enable
+ for_window [class="Gnome-terminal"] floating enable
+# The middle button over a titlebar kills the window
+ bindsym --release button2 kill
+
+# # The middle button and a modifer over any part of the window kills the window
+ bindsym --whole-window $mod+button2 kill
+
+# # The right button toggles floating
+ bindsym button3 floating toggle
+ bindsym $mod+button3 floating toggle
 
 
 #######################################################################

@@ -41,7 +41,7 @@ override_utf8_locale no
 TEXT
 ${font sans-serif:bold:size=8}SYSTEM ${hr}
 
-#${goto 6}${voffset 6}${font conkycolorslogos:size=32}F${font}${goto 55}${voffset -25}${font sans-serif:bold:size=8}IP: $alignr ${addr enp7s0}
+#${goto 6}${voffset 6}${font conkycolorslogos:size=32}F${font}${goto 55}${voffset -25}${font sans-serif:bold:size=8}IP: $alignr ${addr eth0}
 #${goto 6}${font}${goto 55}${voffset -25}${font sans-serif:bold:size=8}tun: $alignr ${addr tun0}
 #${goto 55}${font sans-serif:bold:size=8}HOST:$alignr$nodename_short
 #${goto 55}${font sans-serif:bold:size=8}UPTIME:$alignr$uptime_short
@@ -96,6 +96,6 @@ $font${top_mem name 5}${alignr}${top mem 5} %
 ${font sans-serif:bold:size=8}NETWORK ${hr}
 
 Download: ${downspeed enp0s25} $alignr Total: ${totaldown enp0s25}
-${upspeedgraph enp7s0}
-Upload: ${upspeed enp7s0} $alignr Total: ${totalup enp7s0}
+${upspeedgraph eth0}
+Upload: ${upspeed eth0} $alignr Total: ${totalup eth0}
 

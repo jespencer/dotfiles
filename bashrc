@@ -87,3 +87,4 @@ repocp () {
 #}
 
 
+ alias ls='ls --color'
