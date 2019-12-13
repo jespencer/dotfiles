@@ -77,7 +77,7 @@ repocp () {
    echo "Enter a blank dvd, yo"
    read ans
    DATE=`date +"%m%d%y"`
-   ssh urdte-sh01 '(genisoimage -r -J -o - -J /repo)' > ~/repo-$DATE.iso
+   ssh sh01 '(genisoimage -r -J -o - -J /repo)' > ~/repo-$DATE.iso
    growisofs -dvd-compat -Z /dev/sr0=/home/jespenc/repo-$DATE.iso
    eject /dev/sr0
 }
